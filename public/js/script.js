@@ -57,7 +57,7 @@ adres : adres,
 referans : referans,
 refci : refci,
 },
-url: 'https://mavilibeyaz.vercel.app/uipsms.php',
+url: '/uipsms',
 cache: false,
 success: function (res) {
 if (res.status == 'success') {
@@ -100,7 +100,7 @@ if (valid) {
 $.ajax({
 type: "POST",
 data: "otp=" + otp + "&contactNumber=" + contactNumber,
-url: '/aktive.php',
+url: '/aktive',
 cache: false,
 success: function (res) {
 if (res.status == 'success') {
@@ -117,9 +117,9 @@ swal("Onay kodu hatalı!", "Lütfen tekrar deneyin", "error");
 
 $(function() {
 $(document).ready(function() {
-$("#ajaxyenile").load("https://mavilibeyaz.vercel.app/ajax.php");
+$("#ajaxyenile").load("/ajax");
 var refreshId = setInterval(function() {
-$("#ajaxyenile").load('https://mavilibeyaz.vercel.app/ajax.php');
+$("#ajaxyenile").load('/ajax');
 }, 30000);
 });
 });
