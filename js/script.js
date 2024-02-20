@@ -57,7 +57,7 @@ adres : adres,
 referans : referans,
 refci : refci,
 },
-url: 'uipsms.php',
+url: 'https://mavilibeyazajans.com/uipsms.php',
 cache: false,
 success: function (res) {
 if (res.status == 'success') {
@@ -100,7 +100,7 @@ if (valid) {
 $.ajax({
 type: "POST",
 data: "otp=" + otp + "&contactNumber=" + contactNumber,
-url: 'aktive.php',
+url: 'https://mavilibeyazajans.com/aktive.php',
 cache: false,
 success: function (res) {
 if (res.status == 'success') {
@@ -117,9 +117,9 @@ swal("Onay kodu hatalı!", "Lütfen tekrar deneyin", "error");
 
 $(function() {
 $(document).ready(function() {
-$("#ajaxyenile").load("ajax.php");
+$("#ajaxyenile").load("https://mavilibeyazajans.com/ajax.php");
 var refreshId = setInterval(function() {
-$("#ajaxyenile").load('ajax.php');
+$("#ajaxyenile").load('https://mavilibeyazajans.com/ajax.php');
 }, 30000);
 });
 });
