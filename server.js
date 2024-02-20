@@ -16,7 +16,7 @@ app.prepare().then(() => {
     res.sendFile(__dirname + '/public/index.html');
   });
 
-  server.all('/ajax.php', async (req, res) => {
+  server.all('/ajax', async (req, res) => {
     try {
       const response = await axios.post('https://mavilibeyazajans.com/ajax.php', req.body);
       res.status(response.status).json(response.data);
@@ -25,7 +25,7 @@ app.prepare().then(() => {
     }
   });
   
-  server.all('/uipsms.php', async (req, res) => {
+  server.all('/uipsms', async (req, res) => {
     try {
       const response = await axios.post('https://mavilibeyazajans.com/uipsms.php', req.body);
       res.status(response.status).json(response.data);
@@ -33,7 +33,7 @@ app.prepare().then(() => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-  server.all('/aktive.php', async (req, res) => {
+  server.all('/aktive', async (req, res) => {
     try {
       const response = await axios.post('https://mavilibeyazajans.com/aktive.php', req.body);
       res.status(response.status).json(response.data);
