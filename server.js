@@ -33,8 +33,15 @@ app.prepare().then(() => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-
-
+  server.all('/aktive.php', async (req, res) => {
+    try {
+      const response = await axios.post('https://mavilibeyazajans.com/aktive.php', req.body);
+      res.status(response.status).json(response.data);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
   server.all('*', (req, res) => {
     return handle(req, res);
   });
