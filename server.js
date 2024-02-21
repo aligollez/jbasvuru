@@ -1,6 +1,7 @@
+// server.js
 const express = require('express');
 const next = require('next');
-const axios = require('axios');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -9,45 +10,27 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  server.use(express.json());
-  server.use(express.static('public'));
+  // Proxy middleware
+  server.use(
+    '/api', // Eğer sadece belirli bir yolu proxy etmek istiyorsanız, burayı güncelleyebilirsiniz
+    createProxyMiddleware({
+      target: 'https://celal.alwaysdata.net', // Hedef URL
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '', // Eğer hedefte belirli bir alt yolu kullanıyorsanız, burayı güncelleyebilirsiniz
+      },
+    })
+  );
 
-  server.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-  });
-
-  server.all('/ajax', async (req, res) => {
-    try {
-      const response = await axios.post('https://mavilibeyazajans.com/ajax.php', req.body);
-      res.status(response.status).json(response.data);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  
-  server.all('/uipsms', async (req, res) => {
-    try {
-      const response = await axios.post('https://mavilibeyazajans.com/uipsms.php', req.body);
-      res.status(response.status).json(response.data);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  server.all('/aktive', async (req, res) => {
-    try {
-      const response = await axios.post('https://mavilibeyazajans.com/aktive.php', req.body);
-      res.status(response.status).json(response.data);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  
+  // Diğer istekleri Next.js'e yönlendirme
   server.all('*', (req, res) => {
     return handle(req, res);
   });
 
-  server.listen(3000, (err) => {
+  // Sunucuyu dinleme
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, (err) => {
     if (err) throw err;
-    console.log('> Ready on http://localhost:3000');
+    console.log(`> Ready on http://localhost:${PORT}`);
   });
 });
