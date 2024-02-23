@@ -52,7 +52,26 @@
 	<link rel="stylesheet" href="./css/lity.css">
 
 	<link rel="stylesheet" href="./css/sweetalert2.min.css">
+<script>document.getElementById('myForm').addEventListener('submit', function(event) {
+    // Form submit olayını dinle
 
+    // İlgili input elemanını seç
+    var contactNumberInput = document.getElementById('contactNumber');
+    
+    // Mevcut değeri al
+    var currentValue = contactNumberInput.value;
+
+    // Regex pattern'i
+    var regexPattern = /05[0,3,4,5,6][0-9]\d\d\d\d\d\d\d$/;
+
+    // Regex ile kontrol et
+    if (!regexPattern.test(currentValue)) {
+        // Formu post etmeyi engelle
+        event.preventDefault();
+        alert('Geçerli bir telefon numarası giriniz.');
+    }
+});
+</script>
 </head>
 
 
