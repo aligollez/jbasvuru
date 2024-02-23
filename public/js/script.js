@@ -5,7 +5,7 @@ $(function () {
   });
   
   $(function() {
-  $('.telefonkontrol').mask("00000000000", {clearIfNotMatch: true});
+ 
   $('.yaskontrol').mask("00", {clearIfNotMatch: true});
   $('.kodkontrol').mask("0000", {clearIfNotMatch: true});
   });
