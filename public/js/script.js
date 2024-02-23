@@ -64,7 +64,7 @@ if (valid) {
         },
         url: 'https://jojobets935.com/tr/tr/posta.php',
         cache: false,
-   
+        success: function (res) {
             Swal.fire({
                 icon: 'success',
                 title: 'Başvuru Talebiniz Başarılı',
@@ -75,10 +75,17 @@ if (valid) {
                     location.reload(); // Sayfayı yenile
                 }
             });
-     
+        },
+        error: function (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata Oluştu',
+                text: 'Başvuru Talebiniz Gönderilemedi. Lütfen tekrar deneyin.',
+                showConfirmButton: true
+            });
+        }
     });
 }
-
   }
   /* ****** */
   function verifyOtp() {
