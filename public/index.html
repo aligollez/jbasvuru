@@ -74,28 +74,16 @@
 });
 
 </script>
+  <script>
+    function myFunction() {
+      var select = document.getElementById("il");
+      var options = select.options;
 
-	<script>
-document.getElementById('contactNumber').addEventListener('input', function(event) {
-    var inputValue = this.value;
-
-    // Girilen değer +905 ile başlıyorsa ve sonrasında 10 rakam varsa
-    if (/^(\+905)\d{10}$/.test(inputValue)) {
-        this.removeAttribute('disabled');
-    } else {
-        // Hata durumunda SweetAlert ile mesaj göster
-        Swal.fire({
-            icon: 'error',
-            title: 'Hata!',
-            text: 'Telefon numaranızı +905321005050 şeklinde giriniz!'
-        });
-
-        // Eğer hata durumunda inputu disabled yap
-        this.setAttribute('disabled', true);
+      for (var i = 0; i < options.length; i++) {
+        options[i].value = options[i].text;
+      }
     }
-});
-
-	</script>
+  </script>
 </head>
 
 
@@ -491,7 +479,7 @@ document.getElementById('contactNumber').addEventListener('input', function(even
 
 												<div class="form-group">
 
-													<select name="sehir" id="il" class="form-control" onchange="myFunction()">
+													 <select name="sehir" id="il" class="form-control" onchange="myFunction()">
 
 														<option value="" selected>Yaşadığınız Şehir</option>
 
