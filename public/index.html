@@ -75,14 +75,27 @@
 
 </script>
 
-	<script>document.getElementById('contactNumber').addEventListener('input', function(event) {
+	<script>
+document.getElementById('contactNumber').addEventListener('input', function(event) {
     var inputValue = this.value;
 
-    // Kullanıcı +90 değerini sildiyse ve input boşsa, otomatik olarak +90 ekleyin
-    if (inputValue.trim() === '') {
-        this.value = '+90';
+    // Girilen değer +905 ile başlıyorsa ve sonrasında 10 rakam varsa
+    if (/^(\+905)\d{10}$/.test(inputValue)) {
+        this.removeAttribute('disabled');
+    } else {
+        // Hata durumunda SweetAlert ile mesaj göster
+        Swal.fire({
+            icon: 'error',
+            title: 'Hata!',
+            text: 'Telefon numaranızı +905321005050 şeklinde giriniz!'
+        });
+
+        // Eğer hata durumunda inputu disabled yap
+        this.setAttribute('disabled', true);
     }
-});</script>
+});
+
+	</script>
 </head>
 
 
