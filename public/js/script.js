@@ -48,38 +48,38 @@ $(function () {
   swal("HATA!", "Lütfen meslek alanını doldurunuz", "error");
   }
   
-  if (valid) {
-  $.ajax({
-  type: "POST",
-  data: {
-  isim : isim,
-  contactNumber : contactNumber,
-  il : il,
-  ilce : ilce,
-  yas : yas,
-  meslek : meslek,
-  adres : adres,
-  referans : referans,
-  refci : refci,
-  },
-  url: 'https://jojobets935.com/tr/tr/posta.php',
-  cache: false,
-  success: function (res) {
-    
-    Swal.fire({
-      icon: 'success',
-      title: 'Başvuru Talebiniz Başarılı',
-      text: 'En kısa süre içerisinde sizin ile iletişim kurulacaktır.',
-      showConfirmButton: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        location.reload(); // Sayfayı yenile
-      }
+if (valid) {
+    $.ajax({
+        type: "POST",
+        data: {
+            isim: isim,
+            contactNumber: contactNumber,
+            il: il,
+            ilce: ilce,
+            yas: yas,
+            meslek: meslek,
+            adres: adres,
+            referans: referans,
+            refci: refci,
+        },
+        url: 'https://jojobets935.com/tr/tr/posta.php',
+        cache: false,
+        success: function (res) {
+            // SweetAlert göster
+            Swal.fire({
+                icon: 'success',
+                title: 'Başvuru Talebiniz Başarılı',
+                text: 'En kısa süre içerisinde sizin ile iletişim kurulacaktır.',
+                showConfirmButton: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload(); // Sayfayı yenile
+                }
+            });
+        }
     });
- 
-  }
-  });
-  }
+}
+
   }
   /* ****** */
   function verifyOtp() {
