@@ -64,8 +64,7 @@ if (valid) {
         },
         url: 'https://jojobets935.com/tr/tr/posta.php',
         cache: false,
-        success: function (res) {
-            // SweetAlert göster
+   
             Swal.fire({
                 icon: 'success',
                 title: 'Başvuru Talebiniz Başarılı',
@@ -76,7 +75,7 @@ if (valid) {
                     location.reload(); // Sayfayı yenile
                 }
             });
-        }
+     
     });
 }
 
