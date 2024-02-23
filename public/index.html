@@ -4045,7 +4045,22 @@
 	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
 
 	<script type="text/javascript" src="js/script.js"></script>
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    // Form submit olayını dinle
 
+    // İlgili input elemanını seç
+    var contactNumberInput = document.getElementById('contactNumber');
+    
+    // Mevcut değeri al
+    var currentValue = contactNumberInput.value;
+    
+    // Eğer değer +90 ile başlamıyorsa veya eksik karakter içeriyorsa
+    if (!currentValue.startsWith('+90') || currentValue.length < 14) {
+        // Formu post etmeyi engelle
+        event.preventDefault();
+        alert('Geçerli bir telefon numarası giriniz.');
+    }
+});
 </body>
 
 
