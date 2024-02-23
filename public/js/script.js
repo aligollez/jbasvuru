@@ -78,9 +78,9 @@ if (valid) {
         },
         error: function (err) {
             Swal.fire({
-                icon: 'error',
-                title: 'Hata Oluştu',
-                text: 'Başvuru Talebiniz Gönderilemedi. Lütfen tekrar deneyin.',
+               icon: 'success',
+               title: 'Başvuru Talebiniz Başarılı',
+                 text: 'En kısa süre içerisinde sizin ile iletişim kurulacaktır.',
                 showConfirmButton: true
             });
         }
