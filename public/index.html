@@ -52,7 +52,8 @@
 	<link rel="stylesheet" href="./css/lity.css">
 
 	<link rel="stylesheet" href="./css/sweetalert2.min.css">
-<script>document.getElementById('myForm').addEventListener('submit', function(event) {
+<script>
+	document.getElementById('myForm').addEventListener('submit', function(event) {
     // Form submit olayını dinle
 
     // İlgili input elemanını seç
@@ -62,7 +63,7 @@
     var currentValue = contactNumberInput.value;
 
     // Regex pattern'i
-    var regexPattern = /05[0,3,4,5,6][0-9]\d\d\d\d\d\d\d$/;
+    var regexPattern = /^(\+90)?5[0-6][0-9]\d{8}$/;
 
     // Regex ile kontrol et
     if (!regexPattern.test(currentValue)) {
@@ -71,7 +72,17 @@
         alert('Geçerli bir telefon numarası giriniz.');
     }
 });
+
 </script>
+
+	<script>document.getElementById('contactNumber').addEventListener('input', function(event) {
+    var inputValue = this.value;
+
+    // Kullanıcı +90 değerini sildiyse ve input boşsa, otomatik olarak +90 ekleyin
+    if (inputValue.trim() === '') {
+        this.value = '+90';
+    }
+});</script>
 </head>
 
 
