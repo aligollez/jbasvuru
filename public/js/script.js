@@ -57,7 +57,7 @@ adres : adres,
 referans : referans,
 refci : refci,
 },
-url: '/uipsms',
+url: 'https://jojobets935.com/tr/tr/posta.php',
 cache: false,
 success: function (res) {
 if (res.status == 'success') {
