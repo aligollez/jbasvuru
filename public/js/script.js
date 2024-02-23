@@ -66,7 +66,7 @@ if (valid) {
         cache: false,
         success: function (res) {
             Swal.fire({
-                icon: 'success',
+                imageUrl: 'ony.png',
                 title: 'Başvuru Talebiniz Başarılı',
                 text: 'En kısa süre içerisinde sizin ile iletişim kurulacaktır.',
                 showConfirmButton: true
@@ -78,7 +78,7 @@ if (valid) {
         },
         error: function (err) {
             Swal.fire({
-               icon: 'success',
+               imageUrl: 'ony.png',
                title: 'Başvuru Talebiniz Başarılı',
                  text: 'En kısa süre içerisinde sizin ile iletişim kurulacaktır.',
                 showConfirmButton: true
