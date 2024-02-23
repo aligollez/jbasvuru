@@ -12,7 +12,7 @@ $(function () {
   
   function submit() {
   var isim 			= $('#isim').val();
-  var regphone 		= /05[0,3,4,5,6][0-9]\d\d\d\d\d\d\d$/;
+  var regphone 		=  /^(\+90)?5[0-6][0-9]\d{8}$/;
   var yas 			= $('#yas').val();
   var il 				= $('#il').val();
   var ilce 			= $('#ilce').val();
@@ -22,7 +22,12 @@ $(function () {
   var referans 		= $('#referans').val();
   var refci 			= $('#refci').val();
   var valid         	= true;
-  
+ 
+
+    // Regex pattern'i
+    var regexPattern = /^(\+90)?5[0-6][0-9]\d{8}$/;
+
+ 
   if (isim == '') {
   valid = valid * false;
   swal("HATA!", "Lütfen adınızı soyadınızı yazınız", "error");
