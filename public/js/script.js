@@ -86,6 +86,7 @@ if (valid) {
         }
     });
 }
+
   }
   /* ****** */
   function verifyOtp() {
