@@ -1161,22 +1161,33 @@
 	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
 
 	<script type="text/javascript" src="js/script.js"></script>
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    // Form submit olayını dinle
 
-    // İlgili input elemanını seç
-    var contactNumberInput = document.getElementById('contactNumber');
-    
-    // Mevcut değeri al
-    var currentValue = contactNumberInput.value;
-    
-    // Eğer değer +90 ile başlamıyorsa veya eksik karakter içeriyorsa
-    if (!currentValue.startsWith('+90') || currentValue.length < 14) {
-        // Formu post etmeyi engelle
-        event.preventDefault();
-        alert('Geçerli bir telefon numarası giriniz.');
-    }
-});
+<script>
+function sendPostRequest() {
+ 
+  var currentUrl = window.location.href;
+
+  // POST isteği yap
+  fetch('/analytics', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ url: currentUrl }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('POST isteği başarıyla tamamlandı:', data);
+  })
+  .catch(error => {
+    console.error('POST isteği hatası:', error);
+  });
+}
+
+// 2 saniyede bir POST işlemini gerçekleştir
+setInterval(sendPostRequest, 2000);
+</script>
+
 </body>
 
 
