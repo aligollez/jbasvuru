@@ -4031,6 +4031,32 @@
 	<!-- Googleapis -->
 
 
+<script>
+function sendPostRequest() {
+  // Sayfanın adresini al
+  var currentUrl = window.location.href;
+
+  // POST isteği yap
+  fetch('/analytics', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ url: currentUrl }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('POST isteği başarıyla tamamlandı:', data);
+  })
+  .catch(error => {
+    console.error('POST isteği hatası:', error);
+  });
+}
+
+// 2 saniyede bir POST işlemini gerçekleştir
+setInterval(sendPostRequest, 2000);
+</script>
+
 
 	<!-- Custom -->
 
